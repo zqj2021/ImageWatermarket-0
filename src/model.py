@@ -71,7 +71,7 @@ class FlattenDense(keras.layers.Layer):
         exp_i = tf.expand_dims(channel_first, 1)
         mat_res = tf.matmul(self.w, exp_i)
         y_mat = tf.reduce_sum(mat_res, axis=[2])
-        loss = dense_loss(y_mat, self.w)
+        loss = dense_loss(y_mat, self.w) * 0.01
         self.add_loss(loss)
         y_out = tf.transpose(y_mat, [0, 2, 3, 1])
         y_activate = keras.activations.relu(y_out)
@@ -137,4 +137,4 @@ if __name__ == '__main__':
     model.compile(optimizer=keras.optimizers.Adam(learning_rate=learning_rate))
     model.fit(x=train_dataset, epochs=epochs, steps_per_epoch=steps_per_epoch,
               callbacks=src.callbacks.callbacks()
-              , validation_data=test_dataset, validation_steps=val_steps)
+              , validation_data=test_dataset, validation_steps=val_steps, initial_epoch=800)
