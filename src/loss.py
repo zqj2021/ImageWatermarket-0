@@ -32,8 +32,9 @@ class CoverLoss(keras.layers.Layer):
 
     def call(self, inputs):
         cover_true, cover_pred = inputs
-        self.add_loss(tf.reduce_mean(tf.abs(cover_true - cover_pred), axis=[1, 2, 3]))
+        self.add_loss(tf.abs((40 - tf.image.psnr(cover_true, cover_pred, 1))))
         self.add_metric(psnr(cover_true, cover_pred), name='Psnr')
+        self.add_metric(tf.abs((40 - tf.image.psnr(cover_true, cover_pred, 1))), name='Psnr_loss')
         return inputs
 
 

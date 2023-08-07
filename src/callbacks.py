@@ -38,7 +38,7 @@ class ResultCallback(keras.callbacks.Callback):
 def callbacks():
     logdir = log_path
     return [
-        keras.callbacks.TensorBoard(write_images=True, log_dir=logdir, histogram_freq=5),
+        keras.callbacks.TensorBoard(write_images=True, log_dir=logdir, histogram_freq=1),
         keras.callbacks.ModelCheckpoint(filepath=model_path, save_best_only=True, monitor='loss'),
         ResultCallback(log_dir=logdir, generate=generate_test())
     ]

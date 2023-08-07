@@ -1,16 +1,16 @@
 import datetime
 
-activation = 'elu'
-batch_size = 96
-par_N = 6
+activation = 'relu'
+batch_size = 128
+par_N = 200
 water_size = 32
 image_size = 128
 par_lam = [1, 1, 1, 0.01]
 steps_per_epoch = 10000 / batch_size
-val_steps = 10
-epochs = 1000
+val_steps = 20
+epochs = 2000
 
-learning_rate = 1e-2
+learning_rate = 1e-5
 project_path = './'
 __save_date_path = project_path + 'save-date/'
 model_name = 'DIWatermark_v1.2'

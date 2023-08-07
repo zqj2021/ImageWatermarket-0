@@ -137,4 +137,4 @@ if __name__ == '__main__':
     model.compile(optimizer=keras.optimizers.Adam(learning_rate=learning_rate))
     model.fit(x=train_dataset, epochs=epochs, steps_per_epoch=steps_per_epoch,
               callbacks=src.callbacks.callbacks()
-              , validation_data=test_dataset, validation_steps=val_steps, initial_epoch=800)
+              , validation_data=test_dataset, validation_steps=val_steps, initial_epoch=60)
